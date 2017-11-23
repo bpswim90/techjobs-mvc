@@ -20,12 +20,14 @@ public class SearchController {
     @RequestMapping(value = "")
     public String search(Model model) {
         model.addAttribute("columns", ListController.columnChoices);
+        model.addAttribute("checked","all");
         return "search";
     }
 
     @RequestMapping(value = "/results")
     public String results(@RequestParam String searchType, @RequestParam String searchTerm, Model model) {
         model.addAttribute("columns", ListController.columnChoices);
+        model.addAttribute("checked", searchType);
 
         if (searchType.equals("all")) {
             model.addAttribute("jobs", JobData.findByValue(searchTerm));
