@@ -38,7 +38,7 @@
 
     <table th:each="job : ${jobs}" class="job-listing" th:fragment="list-jobs">
         <tr th:each="field : ${job}">
-            <td th:text="${field.key}"></td>
+            <td th:text="${#strings.capitalizeWords(field.key)}"></td>
             <td th:text="${field.value}"></td>
         </tr>
     </table>
