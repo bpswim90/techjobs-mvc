@@ -36,17 +36,21 @@
 
     <hr />
 
-    <table th:each="job : ${jobs}" class="job-listing" th:fragment="list-jobs">
-        <tr th:each="field : ${job}">
-            <td th:text="${#strings.capitalizeWords(field.key)}"></td>
-            <td>
-                <div th:if="${field.key == 'name'}" th:text="${field.value}"></div>
-                <a th:if="${field.key != 'name'}" th:href="@{/list/jobs(column=${field.key},value=${field.value})}">
-                    <div th:text="${field.value}"></div>
-                </a>
-            </td>
-        </tr>
-    </table>
+    <div th:fragment="list-jobs">
+        <h2 th:if="${results} != null"><span th:text="${results}"></span> result(s)</h2>
+
+        <table th:each="job : ${jobs}" class="job-listing" th:fragment="list-jobs">
+            <tr th:each="field : ${job}">
+                <td th:text="${#strings.capitalizeWords(field.key)}"></td>
+                <td>
+                    <div th:if="${field.key == 'name'}" th:text="${field.value}"></div>
+                    <a th:if="${field.key != 'name'}" th:href="@{/list/jobs(column=${field.key},value=${field.value})}">
+                        <div th:text="${field.value}"></div>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
 
 </div>
 
